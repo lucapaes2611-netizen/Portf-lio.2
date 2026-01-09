@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="pt" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-mono-custom {
+      font-family: 'Space Mono', monospace;
+    }
+    
+    .font-sans-custom {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, currentColor 0%, currentColor var(--progress), transparent var(--progress));
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+    .animate-delay-5 { animation-delay: 0.5s; opacity: 0; }
+    
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid;
+      animation: typewriter 2s steps(30) forwards, blink 0.7s step-end infinite;
+    }
+    
+    .code-block {
+      position: relative;
+    }
+    
+    .code-block::before {
+      content: '>';
+      position: absolute;
+      left: -1.5rem;
+      opacity: 0.5;
+    }
+    
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-4px);
+    }
+    
+    .grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-sans-custom">
+  <div class="noise-overlay"></div>
+  <div id="app-wrapper" class="min-h-full w-full grid-pattern overflow-auto">
+   <div class="max-w-4xl mx-auto px-6 py-16 md:py-24"><!-- Header -->
+    <header class="mb-20">
+     <div class="flex items-center gap-3 mb-6 animate-fade-in animate-delay-1">
+      <div id="status-dot" class="w-3 h-3 rounded-full animate-pulse"></div><span id="status-text" class="text-sm tracking-widest uppercase">Available for work</span>
+     </div>
+     <h1 id="developer-name" class="font-mono-custom text-5xl md:text-7xl font-bold mb-4 animate-fade-in animate-delay-2">Luca Paes</h1>
+     <div class="overflow-hidden animate-fade-in animate-delay-3">
+      <p id="developer-title" class="font-mono-custom text-xl md:text-2xl typewriter">Backend Developer</p>
+     </div>
+    </header><!-- Bio Section -->
+    <section class="mb-20 animate-fade-in animate-delay-4">
+     <div class="flex items-start gap-4">
+      <div id="bio-line" class="w-1 h-full min-h-24 flex-shrink-0"></div>
+      <div>
+       <p id="bio-text" class="text-lg md:text-xl leading-relaxed opacity-80">Desenvolvedor com facilidade com criação de soluções robustas e escaláveis. Especializado em arquiteturas backend e sistemas de alta performance.</p>
+       <div class="flex gap-4 mt-6"><span id="lang-en" class="px-3 py-1 border text-sm font-mono-custom">EN</span> <span id="lang-es" class="px-3 py-1 border text-sm font-mono-custom">ES</span>
+       </div>
+      </div>
+     </div>
+    </section><!-- Skills Section -->
+    <section class="mb-20 animate-fade-in animate-delay-5">
+     <h2 class="font-mono-custom text-sm tracking-widest uppercase mb-8 opacity-50">// Expertise</h2>
+     <div class="space-y-8"><!-- PHP -->
+      <div id="skill-php" class="group hover-lift p-6 border transition-all duration-300">
+       <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center gap-4">
+         <svg class="w-10 h-10" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.2 14.4h-1.6l.4-2h-.9c-.7 0-1.2-.1-1.5-.4-.3-.3-.4-.8-.3-1.4l.5-2.6h1.6l-.5 2.4c-.1.3 0 .5.1.6.1.1.3.2.7.2h.8l.6-3.2h1.6l-1.1 5.4zm4.2-3.4c-.2.3-.5.6-.9.7-.4.2-.9.2-1.4.2h-.8l.4-2h.9c.4 0 .7 0 .9-.1.2-.1.4-.3.5-.6.1-.3.1-.5 0-.7-.1-.2-.3-.2-.7-.2h-.8l-.4 2h-1.6l1-5h2.4c.7 0 1.2.2 1.5.5.3.3.4.8.2 1.4-.1.5-.3.9-.6 1.2-.3.3-.7.5-1.2.6h.1z" />
+         </svg>
+         <div>
+          <h3 class="font-mono-custom text-xl font-bold">PHP</h3>
+          <p class="text-sm opacity-60">Laravel • Symfony • WordPress</p>
+         </div>
+        </div><span class="font-mono-custom text-2xl font-bold">95%</span>
+       </div>
+       <div class="h-1 w-full bg-current opacity-20 rounded-full overflow-hidden">
+        <div class="h-full bg-current rounded-full transition-all duration-1000" style="width: 95%;"></div>
+       </div>
+      </div><!-- Java -->
+      <div id="skill-java" class="group hover-lift p-6 border transition-all duration-300">
+       <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center gap-4">
+         <svg class="w-10 h-10" viewbox="0 0 24 24" fill="currentColor"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149m-.575-2.627s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218m4.84-4.458c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0 0-8.216 2.051-4.292 6.573m6.018 8.809s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892m7.824 4.372c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0 0 .07-.062.09-.118M11.17 2.037s2.497 2.497-2.37 6.339c-3.899 3.08-.889 4.838-.001 6.846-2.275-2.053-3.943-3.858-2.824-5.541 1.644-2.469 6.197-3.665 5.195-7.644" />
+         </svg>
+         <div>
+          <h3 class="font-mono-custom text-xl font-bold">Java</h3>
+          <p class="text-sm opacity-60">Spring Boot • Hibernate • Maven</p>
+         </div>
+        </div><span class="font-mono-custom text-2xl font-bold">90%</span>
+       </div>
+       <div class="h-1 w-full bg-current opacity-20 rounded-full overflow-hidden">
+        <div class="h-full bg-current rounded-full transition-all duration-1000" style="width: 90%;"></div>
+       </div>
+      </div><!-- C++ -->
+      <div id="skill-cpp" class="group hover-lift p-6 border transition-all duration-300">
+       <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center gap-4">
+         <svg class="w-10 h-10" viewbox="0 0 24 24" fill="currentColor"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.109-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z" />
+         </svg>
+         <div>
+          <h3 class="font-mono-custom text-xl font-bold">C++</h3>
+          <p class="text-sm opacity-60">STL • Qt • OpenGL</p>
+         </div>
+        </div><span class="font-mono-custom text-2xl font-bold">85%</span>
+       </div>
+       <div class="h-1 w-full bg-current opacity-20 rounded-full overflow-hidden">
+        <div class="h-full bg-current rounded-full transition-all duration-1000" style="width: 85%;"></div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Projects Section -->
+    <section class="mb-20">
+     <h2 class="font-mono-custom text-sm tracking-widest uppercase mb-8 opacity-50">// Selected Projects</h2>
+     <div class="grid md:grid-cols-2 gap-6">
+      <div id="project-1" class="group hover-lift p-6 border transition-all duration-300 cursor-pointer">
+       <div class="flex items-center justify-between mb-4"><span class="font-mono-custom text-xs opacity-50">01</span>
+        <svg class="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+       </div>
+       <h3 class="font-mono-custom text-lg font-bold mb-2">API Gateway</h3>
+       <p class="text-sm opacity-60 mb-4">Sistema de gateway para microserviços com rate limiting e autenticação JWT.</p>
+       <div class="flex gap-2"><span class="text-xs px-2 py-1 border opacity-60">Java</span> <span class="text-xs px-2 py-1 border opacity-60">Spring</span>
+       </div>
+      </div>
+      <div id="project-2" class="group hover-lift p-6 border transition-all duration-300 cursor-pointer">
+       <div class="flex items-center justify-between mb-4"><span class="font-mono-custom text-xs opacity-50">02</span>
+        <svg class="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+       </div>
+       <h3 class="font-mono-custom text-lg font-bold mb-2">E-commerce Engine</h3>
+       <p class="text-sm opacity-60 mb-4">Plataforma completa de e-commerce com gestão de inventário e pagamentos.</p>
+       <div class="flex gap-2"><span class="text-xs px-2 py-1 border opacity-60">PHP</span> <span class="text-xs px-2 py-1 border opacity-60">Laravel</span>
+       </div>
+      </div>
+      <div id="project-3" class="group hover-lift p-6 border transition-all duration-300 cursor-pointer">
+       <div class="flex items-center justify-between mb-4"><span class="font-mono-custom text-xs opacity-50">03</span>
+        <svg class="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+       </div>
+       <h3 class="font-mono-custom text-lg font-bold mb-2">Game Engine Core</h3>
+       <p class="text-sm opacity-60 mb-4">Motor de física e renderização 2D para jogos indie.</p>
+       <div class="flex gap-2"><span class="text-xs px-2 py-1 border opacity-60">C++</span> <span class="text-xs px-2 py-1 border opacity-60">OpenGL</span>
+       </div>
+      </div>
+      <div id="project-4" class="group hover-lift p-6 border transition-all duration-300 cursor-pointer">
+       <div class="flex items-center justify-between mb-4"><span class="font-mono-custom text-xs opacity-50">04</span>
+        <svg class="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+       </div>
+       <h3 class="font-mono-custom text-lg font-bold mb-2">CMS Headless</h3>
+       <p class="text-sm opacity-60 mb-4">Sistema de gerenciamento de conteúdo com API GraphQL.</p>
+       <div class="flex gap-2"><span class="text-xs px-2 py-1 border opacity-60">PHP</span> <span class="text-xs px-2 py-1 border opacity-60">GraphQL</span>
+       </div>
+      </div>
+     </div>
+    </section><!-- Contact Section -->
+    <section class="border-t pt-16">
+     <h2 class="font-mono-custom text-sm tracking-widest uppercase mb-8 opacity-50">// Let's Connect</h2>
+     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+      <div>
+       <p id="email-display" class="font-mono-custom text-2xl md:text-3xl font-bold mb-4 hover:opacity-70 transition-opacity cursor-pointer">hello@email.com</p>
+       <p id="location-display" class="opacity-60">📍 Your Location</p>
+      </div>
+      <div class="flex gap-4"><a href="#" id="social-github" class="w-12 h-12 border flex items-center justify-center hover-lift transition-all duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg></a> <a href="#" id="social-linkedin" class="w-12 h-12 border flex items-center justify-center hover-lift transition-all duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg></a>
+      </div>
+     </div>
+     <div class="mt-16 pt-8 border-t flex justify-between items-center text-sm opacity-50"><span class="font-mono-custom">© 2025</span> <span class="font-mono-custom">Built with passion :D</span>
+     </div>
+    </section>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: '#0a0a0a',
+      surface_color: '#1a1a1a',
+      text_color: '#ffffff',
+      accent_color: '#888888',
+      border_color: '#333333',
+      font_family: 'Inter',
+      font_size: 16,
+      developer_name: 'Luca Paes',
+      developer_title: 'Backend Developer',
+      bio_text: 'Desenvolvedor com facilidade com criação de soluções robustas e escaláveis. Especializado em arquiteturas backend e sistemas de alta performance.',
+      email_address: 'Lucapaes1@outlook.com',
+      location_text: 'Presidente Prudente - SP'
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(cfg) {
+      const bg = cfg.background_color || defaultConfig.background_color;
+      const surface = cfg.surface_color || defaultConfig.surface_color;
+      const text = cfg.text_color || defaultConfig.text_color;
+      const accent = cfg.accent_color || defaultConfig.accent_color;
+      const border = cfg.border_color || defaultConfig.border_color;
+      const fontFamily = cfg.font_family || defaultConfig.font_family;
+      const fontSize = cfg.font_size || defaultConfig.font_size;
+
+      // Apply background
+      const wrapper = document.getElementById('app-wrapper');
+      wrapper.style.backgroundColor = bg;
+      
+      // Apply text color
+      document.body.style.color = text;
+      
+      // Apply fonts
+      const baseFontStack = 'Inter, sans-serif';
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.body.style.fontSize = `${fontSize}px`;
+      
+      // Apply accent to status dot
+      const statusDot = document.getElementById('status-dot');
+      statusDot.style.backgroundColor = accent;
+      
+      // Apply border color to all bordered elements
+      const borderedElements = document.querySelectorAll('.border');
+      borderedElements.forEach(el => {
+        el.style.borderColor = border;
+      });
+      
+      // Bio line accent
+      const bioLine = document.getElementById('bio-line');
+      bioLine.style.backgroundColor = accent;
+      
+      // Language badges
+      const langEn = document.getElementById('lang-en');
+      const langEs = document.getElementById('lang-es');
+      langEn.style.borderColor = border;
+      langEs.style.borderColor = border;
+      
+      // Skill cards hover background
+      const skillCards = [
+        document.getElementById('skill-php'),
+        document.getElementById('skill-java'),
+        document.getElementById('skill-cpp')
+      ];
+      skillCards.forEach(card => {
+        card.style.borderColor = border;
+        card.style.backgroundColor = 'transparent';
+        card.addEventListener('mouseenter', () => {
+          card.style.backgroundColor = surface;
+          card.style.borderColor = accent;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.backgroundColor = 'transparent';
+          card.style.borderColor = border;
+        });
+      });
+      
+      // Project cards
+      const projectCards = [
+        document.getElementById('project-1'),
+        document.getElementById('project-2'),
+        document.getElementById('project-3'),
+        document.getElementById('project-4')
+      ];
+      projectCards.forEach(card => {
+        card.style.borderColor = border;
+        card.style.backgroundColor = 'transparent';
+        card.addEventListener('mouseenter', () => {
+          card.style.backgroundColor = surface;
+          card.style.borderColor = accent;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.backgroundColor = 'transparent';
+          card.style.borderColor = border;
+        });
+      });
+      
+      // Social buttons
+      const socialGithub = document.getElementById('social-github');
+      const socialLinkedin = document.getElementById('social-linkedin');
+      [socialGithub, socialLinkedin].forEach(btn => {
+        btn.style.borderColor = border;
+        btn.addEventListener('mouseenter', () => {
+          btn.style.backgroundColor = surface;
+          btn.style.borderColor = accent;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.backgroundColor = 'transparent';
+          btn.style.borderColor = border;
+        });
+      });
+
+      // Update text content
+      document.getElementById('developer-name').textContent = cfg.developer_name || defaultConfig.developer_name;
+      document.getElementById('developer-title').textContent = cfg.developer_title || defaultConfig.developer_title;
+      document.getElementById('bio-text').textContent = cfg.bio_text || defaultConfig.bio_text;
+      document.getElementById('email-display').textContent = cfg.email_address || defaultConfig.email_address;
+      document.getElementById('location-display').textContent = '📍 ' + (cfg.location_text || defaultConfig.location_text);
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.border_color || defaultConfig.border_color,
+            set: (value) => {
+              cfg.border_color = value;
+              window.elementSdk.setConfig({ border_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            cfg.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['developer_name', cfg.developer_name || defaultConfig.developer_name],
+        ['developer_title', cfg.developer_title || defaultConfig.developer_title],
+        ['bio_text', cfg.bio_text || defaultConfig.bio_text],
+        ['email_address', cfg.email_address || defaultConfig.email_address],
+        ['location_text', cfg.location_text || defaultConfig.location_text]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Initial render
+    onConfigChange(config);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bb6d5d3205ed80a',t:'MTc2Nzk5MjEyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
